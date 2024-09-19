@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Background Animation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #00eeff;
+        }
+
+        .circle-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+        }
+
+        .circle {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff007f, #ff7700);
+            animation: pulse 2s infinite ease-in-out, rotate 3s linear infinite;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            50% {
+                transform: scale(1.5);
+                opacity: 0.6;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #f5a623, #f76c6c, #c71585, #1e90ff);
+            background-size: 200% 200%;
+            animation: backgroundAnimation 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        header {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            text-transform: uppercase;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            position: relative;
+            z-index: 1;
+        }
+
+        main {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer {
+            width: 100%;
+            background: rgba(51, 51, 51, 0.8);
+            padding: 10px;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        #footer-nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        #footer-nav li {
+            margin: 0 15px;
+        }
+
+        #footer-nav a {
+            text-decoration: none;
+            color: #f5f5f5;
+            font-weight: bold;
+            font-size: 1.2em;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        #footer-nav a:hover {
+            color: #4CAF50;
+            transform: scale(1.1);
+        }
+
+        #footer-nav .more-options {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+
+        #footer-nav .more-options:hover {
+            background-color: #7545a0;
+        }
+
+        .more-options-dropdown {
+            display: none;
+            position: absolute;
+            background-color: white;
+            border: 1px solid #ccc;
+            padding: 10px;
+            z-index: 1000;
+        }
+
+        .more-options-dropdown.show {
+            display: block;
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        form label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+        .glowing-button {
+            position: relative;
+            display: inline-block;
+            padding: 15px 40px;
+            font-size: 16px;
+            color: #FFF;
+            background-color: #333;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            overflow: hidden;
+            text-align: center;
+            transition: color 0.4s;
+        }
+
+        .glowing-button::before {
+            content: "";
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            background: linear-gradient(45deg, #FF6F61, #D1C4E9, #DCE775, #FFAB91);
+            filter: blur(10px);
+            animation: glowing 20s linear infinite;
+            border-radius: 14px;
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .glowing-button:hover {
+            color: #000;
+        }
+
+        .glowing-button:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes glowing {
+            0% { background-position: 0 0; }
+            50% { background-position: 100% 100%; }
+            100% { background-position: 0 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+    <header>
+        <h1>Feel Free to Ask Anything</h1>
+    </header>
+    <main>
+        <section>
+            <form id="contact-form" onsubmit="sendMail(); return false;">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="user_name" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" name="user_email" required>
+                <label for="message">Enter Your Message</label>
+                <textarea id="message" name="message" required></textarea>
+                <button class="glowing-button" type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <nav id="footer-nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                
+                
+            </ul>
+            
+        </nav>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        (function() {
+            emailjs.init("SEn61nbgxvrE9jMp2");
+        })();
+
+        function sendMail() {
+            let parms = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value
+            };
+            emailjs.send("service_m1xpwk7", "template_c76bisg", parms).then(function() {
+                alert("Email sent!!");
+            });
+        }
+
+        document.querySelector('.more-options').addEventListener('click', function() {
+            const dropdown = document.querySelector('.more-options-dropdown');
+            dropdown.classList.toggle('show');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Background Animation</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Background color set for the animated effect */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #f5a623, #f76c6c, #c71585, #1e90ff);
+            background-size: 200% 200%;
+            animation: backgroundAnimation 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            width: 100%;
+            text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+
+        main {
+            padding: 60px 20px 20px;
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            max-width: 800px;
+            width: 100%;
+            margin-top: 80px;
+            position: relative;
+            z-index: 1;
+            display: flex;
+            align-items: center;
+        }
+
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+
+        .image {
+            flex: 0 0 auto;
+            margin-right: 20px;
+        }
+
+        .image img {
+            max-width: 200px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        footer {
+            width: 100%;
+            background: rgba(51, 51, 51, 0.8);
+            padding: 10px;
+            position: relative;
+            text-align: center;
+            z-index: 1;
+        }
+
+        h2 {
+            color: #004d40;
+            margin-bottom: 10px;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        h5 {
+            color: #00796b;
+            margin-bottom: 20px;
+            animation: slideIn 0.5s ease-out 0.5s;
+        }
+
+        p {
+            color: #004d40;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            animation: fadeIn 1s ease-in 0.5s;
+        }
+
+        a {
+            text-decoration: none;
+            color: #00bcd4;
+            font-weight: bold;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        a:hover {
+            color: #0097a7;
+            transform: scale(1.05);
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #00bcd4;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        button:hover {
+            background-color: #0097a7;
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(-20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+    <header>
+        <h1>About Me</h1>
+    </header>
+    
+    <main>
+        <div class="image">
+            <img src="WhatsApp Image 2024-09-19 at 02.22.08_8ac7cd59.png" alt="Profile Picture">
+        </div>
+        <div class="content">
+            <h2>Dr. Ramadan Hathout</h2>
+            <h5>Faculty of Audiology</h5>
+            <p><strong>Master's Degree at Ain Shams Faculty of Medicine</strong></p>
+            <p><strong>MD (Medical Doctorate) in Otorhinolaryngology-Head and Neck Surgery</strong></p>
+            <p>25 years of experience</p>
+            <a href="Untitled-1.html">Contact Us</a>
+        </div>
+    </main>
+
+</body>
+</html>

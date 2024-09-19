@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Webpage with Animations</title>
+    <style>
+        /* General Styles */
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        .animated-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, #f5a623, #f76c6c, #c71585, #1e90ff);
+            background-size: 200% 200%;
+            animation: backgroundAnimation 20s linear infinite;
+            z-index: -1;
+        }
+
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 0%;
+            }
+            50% {
+                background-position: 100% 100%;
+            }
+            100% {
+                background-position: 0% 0%;
+            }
+        }
+
+        header {
+            width: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 20px;
+            text-align: right;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 0;
+            z-index: 1;
+        }
+
+        header a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5em;
+            padding: 10px;
+            transition: color 0.3s ease;
+        }
+
+        header a:hover {
+            color: #4CAF50;
+        }
+
+        main {
+            margin-top: 100px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        .card {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            margin: 15px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            position: relative;
+            width: 300px;
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateX(10px);
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+            padding: 5px;
+            border: 5px solid;
+            border-image: linear-gradient(45deg, #ff007f, #ff7700) 1;
+            animation: rotateBorder 3s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            0% {
+                border-image: linear-gradient(45deg, #ff007f, #ff7700) 1;
+            }
+            100% {
+                border-image: linear-gradient(405deg, #ff007f, #ff7700) 1;
+            }
+        }
+
+        .card-content {
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 1.8em;
+            color: #f5f5f5;
+        }
+
+        p {
+            font-size: 1em;
+            color: #ddd;
+        }
+
+        .circle-button {
+            display: inline-block;
+            width: 80px;
+            height: 80px;
+            line-height: 80px;
+            text-align: center;
+            background: linear-gradient(45deg, #ff007f, #ff7700);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: bold;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .circle-button:hover {
+            transform: scale(1.1);
+            background: linear-gradient(45deg, #ff7700, #1e90ff);
+        }
+
+        .circle-button:active {
+            transform: scale(0.95);
+            background: linear-gradient(45deg, #1e90ff, #ff007f);
+        }
+
+        .circle-button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #ff007f, #ff7700, #1e90ff, #f5a623);
+            filter: blur(10px);
+            z-index: -1;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .circle-button:hover::before {
+            opacity: 1;
+        }
+
+        footer {
+            width: 100%;
+            background: rgba(51, 51, 51, 0.8);
+            padding: 10px;
+            position: fixed;
+            bottom: 0;
+            text-align: center;
+            z-index: 1;
+        }
+
+        footer ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        footer li {
+            margin: 0 15px;
+        }
+
+        footer a {
+            text-decoration: none;
+            color: #f5f5f5;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #4CAF50;
+        }
+
+        footer p {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #f5f5f5;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            main {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 80%;
+            }
+
+            .circle-button {
+                width: 60px;
+                height: 60px;
+                line-height: 60px;
+                font-size: 12px;
+            }
+
+            header {
+                text-align: center;
+                padding: 15px;
+            }
+
+            footer ul {
+                flex-direction: column;
+            }
+
+            footer li {
+                margin: 10px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h3 {
+                font-size: 1.5em;
+            }
+
+            p {
+                font-size: 0.9em;
+            }
+
+            .circle-button {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-background"></div>
+
+    <header>
+        <a href="#">Logo</a>
+    </header>
+
+    <main>
+        <div class="card">
+            <img src="449158434_886550986851833_947300644108698802_n.jpg" alt="Picture 1">
+            <div class="card-content">
+                
+                <p>مكتبة دار الاطباء لبيع الكتب الطبيه</p>
+                <a href="https://www.facebook.com/profile.php?id=100064908181472" class="circle-button">Learn More</a>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="291805231_467432262053669_2942165535168347437_n.jpg" alt="Picture 2">
+            <div class="card-content">
+                
+               <h2> <p>عيادة الدكتور رمضان حتحوت استشاري انف اذن و حنجره</p></h2>
+                <a href="https://www.facebook.com/photo/?fbid=467432268720335&set=a.467432235387005" class="circle-button">Learn More</a>
+            </div>
+        </div>
+
+       
+    </main>
+
+    <footer>
+        <ul>
+            <li><a href="https://www.facebook.com/dr.Ramadan.Hathout" target="_blank">اضغط هنا</a></li>
+            <li><a href="about.html">اعرف عنا</a></li>
+    
+            <li><a href="Untitled-1.html">تواصل معنا</a></li>
+        </ul>
+        <p>&copy; 2024 Your Company. All rights reserved.</p>
+    </footer>
+</body>
+</html>
